@@ -1,0 +1,34 @@
+{
+  "name": "rivertext",
+  "version": "1.0.0",
+  "description": "An api that allows kayakers to text-in to get a river flow reading.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon dist/app.js"
+  },
+  "keywords": [],
+  "author": "Sean Mc Ternan",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/express": "^4.17.6",
+    "@types/node": "^14.0.14",
+    "@typescript-eslint/eslint-plugin": "^3.4.0",
+    "@typescript-eslint/parser": "^3.4.0",
+    "eslint": "^7.2.0",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-config-node": "^4.1.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "nodemon": "^2.0.4",
+    "prettier": "^2.0.5"
+  },
+  "dependencies": {
+    "axios": "^0.19.2",
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "moment": "^2.27.0"
+  }
+}
