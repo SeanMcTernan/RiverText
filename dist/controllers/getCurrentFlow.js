@@ -22,28 +22,16 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getRiverData = void 0;
+exports.axiosRequest = exports.instance = void 0;
 const axios_1 = __importDefault(require("axios"));
-const moment_1 = __importDefault(require("moment"));
 const https = __importStar(require("https"));
 const apiKey = process.env.SCRAPAPI;
-//Create HTTP agent to bypass SSL requirement
-const instance = axios_1.default.create({
+exports.instance = axios_1.default.create({
     httpsAgent: new https.Agent({
         rejectUnauthorized: false
     })
 });
-const station = '08CE001';
-exports.getRiverData = (req, res) => {
-    const currentTime = moment_1.default().format('YYYY-MM-DD');
-    const river = req.query.text.toLowerCase();
-    instance
-        .get(`https://vps267042.vps.ovh.ca/scrapi/station/${station}/flow/?startDate=${currentTime}&endDate=${currentTime}&resultType=history&key=${apiKey}`)
-        .then(riverData => {
-        const currentLevel = riverData.data.message.history.pop();
-        res.json({ river: river, level: currentLevel.value, date: currentLevel.date });
-    })
-        .catch(err => {
-        console.log(err);
-    });
+exports.axiosRequest = async (station, currentTime) => {
+    return (exports.instance
+        .get(`https://vps267042.vps.ovh.ca/scrapi/station/${station}/flow/?startDate=${currentTime}&endDate=${currentTime}&resultType=history&key=${apiKey}`));
 };

@@ -4,7 +4,7 @@
   "description": "An api that allows kayakers to text-in to get a river flow reading.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "env-cmd -f ./config/dev.env nodemon dist/app.js",
     "start": "nodemon dist/app.js"
   },
   "keywords": [],
@@ -28,6 +28,7 @@
   "dependencies": {
     "axios": "^0.19.2",
     "body-parser": "^1.19.0",
+    "env-cmd": "^10.1.0",
     "express": "^4.17.1",
     "moment": "^2.27.0"
   }

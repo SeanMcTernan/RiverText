@@ -1,9 +1,9 @@
 import { Router } from 'express';
 
-import { getRiverData } from '../controllers/getRiverData';
+import { getRiverData } from '../controllers/riverDataController';
 
 const router = Router();
 
-router.get('/', getRiverData);
+router.get('/webhooks', getRiverData);
 
 export default router;  
