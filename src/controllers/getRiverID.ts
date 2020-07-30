@@ -1,3 +1,4 @@
+//Pull the corresponding station ID for the requested river
 export const getRiverID = (river: string): string | null => {
     let riverID: string | null;
     switch (river) {

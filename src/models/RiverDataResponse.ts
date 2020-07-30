@@ -9,3 +9,8 @@ export type RiverDataResponse = {
     };
 }
 
+export type History = {
+    value: string;
+    date: string;
+}
+

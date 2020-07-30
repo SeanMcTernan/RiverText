@@ -1,10 +1,12 @@
+//Call Public API for Flow data on selected river
 import axios from 'axios';
 import { RiverDataResponse } from '../models/RiverDataResponse';
 import * as https from 'https';
 
 const apiKey = process.env.SCRAPAPI
 
-export const instance = axios.create({
+//Create an new agent for Axios to avoid an SSL error. 
+const instance = axios.create({
     httpsAgent: new https.Agent({
         rejectUnauthorized: false
     })

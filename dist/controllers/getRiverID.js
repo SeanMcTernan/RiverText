@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getRiverID = void 0;
+//Pull the corresponding station ID for the requested river
 exports.getRiverID = (river) => {
     let riverID;
     switch (river) {

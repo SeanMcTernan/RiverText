@@ -1,4 +1,13 @@
 "use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
@@ -7,18 +16,28 @@ exports.getRiverData = void 0;
 const moment_1 = __importDefault(require("moment"));
 const getCurrentFlow_1 = require("./getCurrentFlow");
 const getRiverID_1 = require("./getRiverID");
-exports.getRiverData = async (req, res) => {
+const messageConstructor_1 = require("./messageConstructor");
+const sendMessage_1 = require("./sendMessage");
+exports.getRiverData = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const currentTime = moment_1.default().format('YYYY-MM-DD');
     const river = req.query.text.toLowerCase().trim();
+    const number = req.query.from;
     const riverID = getRiverID_1.getRiverID(river);
     if (riverID) {
         getCurrentFlow_1.axiosRequest(riverID, currentTime)
             .then(riverData => {
             const currentLevel = riverData.data.message.history.pop();
-            res.json({ riverID: riverID, river: river, level: currentLevel.value, date: currentLevel.date });
+            const units = riverData.data.message.unit;
+            const message = messageConstructor_1.messageConstructor(river, currentLevel, units);
+            res.json({ message });
+            sendMessage_1.sendMessage(number, message);
         })
             .catch(err => {
             console.log(err);
         });
     }
-};
+    else {
+        sendMessage_1.sendMessage(number, 'No river information available.');
+        res.json({ error: 'No river information available.' });
+    }
+});

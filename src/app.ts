@@ -1,7 +1,9 @@
+//Run express server and listen for incoming data. 
 import express, { Request, Response } from 'express';
 import { json } from 'body-parser';
-
 import riverTextRoutes from './routes/riverData';
+
+const port = process.env.PORT || 3000;
 
 const app = express();
 
@@ -13,4 +15,6 @@ app.use((err: Error, req: Request, res: Response) => {
   res.status(500).json({ message: err.message });
 });
 
-app.listen(3000);
+app.listen(port, () => {
+  console.log("Server is up on port " + port);
+});

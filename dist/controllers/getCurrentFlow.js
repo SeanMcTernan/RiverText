@@ -18,20 +18,31 @@ var __importStar = (this && this.__importStar) || function (mod) {
     __setModuleDefault(result, mod);
     return result;
 };
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.axiosRequest = exports.instance = void 0;
+exports.axiosRequest = void 0;
+//Call Public API for Flow data on selected river
 const axios_1 = __importDefault(require("axios"));
 const https = __importStar(require("https"));
 const apiKey = process.env.SCRAPAPI;
-exports.instance = axios_1.default.create({
+//Create an new agent for Axios to avoid an SSL error. 
+const instance = axios_1.default.create({
     httpsAgent: new https.Agent({
         rejectUnauthorized: false
     })
 });
-exports.axiosRequest = async (station, currentTime) => {
-    return (exports.instance
+exports.axiosRequest = (station, currentTime) => __awaiter(void 0, void 0, void 0, function* () {
+    return (instance
         .get(`https://vps267042.vps.ovh.ca/scrapi/station/${station}/flow/?startDate=${currentTime}&endDate=${currentTime}&resultType=history&key=${apiKey}`));
-};
+});
