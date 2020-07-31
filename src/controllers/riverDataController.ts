@@ -22,13 +22,13 @@ export const getRiverData: RequestHandler = async (req, res) => {
                 const units = riverData.data.message.unit as string;
                 const message = messageConstructor(river, currentLevel, units);
                 res.json({ message });
-                // sendMessage(number, message);
+                sendMessage(number, message);
             })
             .catch(err => {
                 console.log(err);
             })
     } else {
-        // sendMessage(number, 'No river information available.');
+        sendMessage(number, 'No river information available.');
         res.json({ error: 'No river information available.' });
     }
 }

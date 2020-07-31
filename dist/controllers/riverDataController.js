@@ -17,6 +17,7 @@ const moment_1 = __importDefault(require("moment"));
 const getCurrentFlow_1 = require("./getCurrentFlow");
 const getRiverID_1 = require("./getRiverID");
 const messageConstructor_1 = require("./messageConstructor");
+const sendMessage_1 = require("./sendMessage");
 const textFormatter_1 = require("./textFormatter");
 exports.getRiverData = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const currentTime = moment_1.default().format('YYYY-MM-DD');
@@ -31,14 +32,14 @@ exports.getRiverData = (req, res) => __awaiter(void 0, void 0, void 0, function*
             const units = riverData.data.message.unit;
             const message = messageConstructor_1.messageConstructor(river, currentLevel, units);
             res.json({ message });
-            // sendMessage(number, message);
+            sendMessage_1.sendMessage(number, message);
         })
             .catch(err => {
             console.log(err);
         });
     }
     else {
-        // sendMessage(number, 'No river information available.');
+        sendMessage_1.sendMessage(number, 'No river information available.');
         res.json({ error: 'No river information available.' });
     }
 });
