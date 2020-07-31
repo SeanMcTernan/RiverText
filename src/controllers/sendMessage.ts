@@ -18,4 +18,3 @@ export const sendMessage = (number: string, message: string): void => {
         })
 }
 
-

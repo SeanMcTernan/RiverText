@@ -17,27 +17,28 @@ const moment_1 = __importDefault(require("moment"));
 const getCurrentFlow_1 = require("./getCurrentFlow");
 const getRiverID_1 = require("./getRiverID");
 const messageConstructor_1 = require("./messageConstructor");
-const sendMessage_1 = require("./sendMessage");
+const textFormatter_1 = require("./textFormatter");
 exports.getRiverData = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const currentTime = moment_1.default().format('YYYY-MM-DD');
-    const river = req.query.text.toLowerCase().trim();
+    const text = req.query.text.toLowerCase().trim();
+    const river = textFormatter_1.textFormatter(text);
     const number = req.query.from;
-    const riverID = getRiverID_1.getRiverID(river);
-    if (riverID) {
+    if (river) {
+        const riverID = getRiverID_1.getRiverID(river);
         getCurrentFlow_1.axiosRequest(riverID, currentTime)
             .then(riverData => {
             const currentLevel = riverData.data.message.history.pop();
             const units = riverData.data.message.unit;
             const message = messageConstructor_1.messageConstructor(river, currentLevel, units);
             res.json({ message });
-            sendMessage_1.sendMessage(number, message);
+            // sendMessage(number, message);
         })
             .catch(err => {
             console.log(err);
         });
     }
     else {
-        sendMessage_1.sendMessage(number, 'No river information available.');
+        // sendMessage(number, 'No river information available.');
         res.json({ error: 'No river information available.' });
     }
 });
