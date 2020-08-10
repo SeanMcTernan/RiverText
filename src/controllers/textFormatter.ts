@@ -1,4 +1,4 @@
-//Extract the river same from potential surrounding text.
+//Extract the river name from potential surrounding text.
 import { rivers } from './riversArray';
 
 export const textFormatter = (text: string): string | null => {

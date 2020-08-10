@@ -18,13 +18,18 @@ export const getRiverData: RequestHandler = async (req, res) => {
         const riverID = getRiverID(river);
         axiosRequest(riverID!, currentTime)
             .then(riverData => {
-                const currentLevel = riverData.data.message.history.pop() as History;
-                const units = riverData.data.message.unit as string;
-                const message = messageConstructor(river, currentLevel, units);
-                res.json({ message });
-                sendMessage(number, message);
+                if (riverData.data.message.history as History) {
+                    const currentLevel = riverData.data.message.history.pop() as History;
+                    const units = riverData.data.message.unit as string;
+                    const message = messageConstructor(river, currentLevel, units);
+                    sendMessage(number, message);
+
+                } else {
+                    sendMessage(number, 'No river information available at this time.');
+                }
             })
             .catch(err => {
+                sendMessage(number, 'No river information available at this time.');
                 console.log(err);
             })
     } else {
