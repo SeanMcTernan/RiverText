@@ -15,5 +15,5 @@ app.use((err, req, res) => {
     res.status(500).json({ message: err.message });
 });
 app.listen(port, () => {
-    console.log("Server is up on port " + port);
+    console.log("Server is running on port " + port);
 });
