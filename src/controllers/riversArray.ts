@@ -2,5 +2,6 @@ export const rivers = [
     'elk',
     'spilli',
     'spillimacheen',
-    'stikine'
+    'stikine',
+    'homathko'
 ];

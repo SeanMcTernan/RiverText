@@ -5,5 +5,6 @@ exports.rivers = [
     'elk',
     'spilli',
     'spillimacheen',
-    'stikine'
+    'stikine',
+    'homathko'
 ];

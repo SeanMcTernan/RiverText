@@ -28,13 +28,20 @@ exports.getRiverData = (req, res) => __awaiter(void 0, void 0, void 0, function*
         const riverID = getRiverID_1.getRiverID(river);
         getCurrentFlow_1.axiosRequest(riverID, currentTime)
             .then(riverData => {
-            const currentLevel = riverData.data.message.history.pop();
-            const units = riverData.data.message.unit;
-            const message = messageConstructor_1.messageConstructor(river, currentLevel, units);
-            res.json({ message });
-            sendMessage_1.sendMessage(number, message);
+            if (riverData.data.message.history) {
+                const currentLevel = riverData.data.message.history.pop();
+                const units = riverData.data.message.unit;
+                const message = messageConstructor_1.messageConstructor(river, currentLevel, units);
+                sendMessage_1.sendMessage(number, message);
+                res.json({ message });
+            }
+            else {
+                sendMessage_1.sendMessage(number, 'No river information available at this time.');
+                res.json({ message: 'No river information available.' });
+            }
         })
             .catch(err => {
+            sendMessage_1.sendMessage(number, 'No river information available at this time.');
             console.log(err);
         });
     }

@@ -17,6 +17,9 @@ exports.getRiverID = (river) => {
         case 'spillimacheen':
             riverID = '08NA011';
             break;
+        case 'homathko':
+            riverID = '08GD004';
+            break;
         default:
             riverID = null;
     }
