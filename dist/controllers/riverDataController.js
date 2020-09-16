@@ -28,6 +28,7 @@ exports.getRiverData = (req, res) => __awaiter(void 0, void 0, void 0, function*
         const riverID = getRiverID_1.getRiverID(river);
         getCurrentFlow_1.axiosRequest(riverID, currentTime)
             .then(riverData => {
+            console.log(`Scrapi server responded with status code: ${riverData.data.code}`);
             if (riverData.data.message.history) {
                 const currentLevel = riverData.data.message.history.pop();
                 const units = riverData.data.message.unit;
@@ -46,7 +47,7 @@ exports.getRiverData = (req, res) => __awaiter(void 0, void 0, void 0, function*
         });
     }
     else {
-        sendMessage_1.sendMessage(number, 'No river information available.');
-        res.json({ error: 'No river information available.' });
+        sendMessage_1.sendMessage(number, 'River not listed. Please try another.');
+        res.json({ error: 'River not listed. Please try another.' });
     }
 });

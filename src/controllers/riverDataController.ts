@@ -1,4 +1,4 @@
-//Process incoming data requests
+//Process incoming data requests and return corresponding message. 
 import { RequestHandler } from 'express';
 import moment from 'moment';
 import { axiosRequest } from './getCurrentFlow';
@@ -18,6 +18,7 @@ export const getRiverData: RequestHandler = async (req, res) => {
         const riverID = getRiverID(river);
         axiosRequest(riverID!, currentTime)
             .then(riverData => {
+                console.log(`Scrapi server responded with status code: ${riverData.data.code}`);
                 if (riverData.data.message.history as History) {
                     const currentLevel = riverData.data.message.history.pop() as History;
                     const units = riverData.data.message.unit as string;
@@ -35,7 +36,7 @@ export const getRiverData: RequestHandler = async (req, res) => {
                 console.log(err);
             })
     } else {
-        sendMessage(number, 'No river information available.');
-        res.json({ error: 'No river information available.' });
+        sendMessage(number, 'River not listed. Please try another.');
+        res.json({ error: 'River not listed. Please try another.' });
     }
 }

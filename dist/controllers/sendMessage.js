@@ -36,6 +36,9 @@ const instance = axios_1.default.create({
 exports.sendMessage = (number, message) => {
     instance
         .post(`https://tollfree.simpletexting.com/v1/send?token=${apiKey}&phone=${number}&message=${message}`)
+        .then((response) => {
+        console.log(`SimpleTexing Server responded with message: ${response.data.message}`);
+    })
         .catch(err => {
         console.log(err);
     });

@@ -1,3 +1,4 @@
+//Models for the SCRAPI API response. 
 export type RiverDataResponse = {
     code: string;
     url: string;

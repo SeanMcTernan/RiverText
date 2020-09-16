@@ -1,4 +1,4 @@
-
+// Construct a user readable message for the SMS response. 
 import { History } from '../models/RiverDataResponse';
 
 const capitalize = (riverName: string): string => riverName.charAt(0).toUpperCase() + riverName.slice(1);
