@@ -1,6 +1,6 @@
 //Process incoming data requests and return corresponding message. 
 import { RequestHandler } from 'express';
-import moment from 'moment';
+import moment from 'moment-timezone';
 import { axiosRequest } from './getCurrentFlow';
 import { getRiverID } from './getRiverID';
 import { History } from '../models/RiverDataResponse';
@@ -10,7 +10,8 @@ import { textFormatter } from './textFormatter';
 
 
 export const getRiverData: RequestHandler = async (req, res) => {
-    const currentTime = moment().format('YYYY-MM-DD');
+    const currentTime = moment().tz("America/Vancouver").format('YYYY-MM-DD');
+    console.log(`The date entered into the text request was: ${currentTime}`);
     const text = (req.query as { text: string }).text.toLowerCase().trim();
     const river = textFormatter(text);
     const number = (req.query as { from: string }).from;
@@ -27,7 +28,7 @@ export const getRiverData: RequestHandler = async (req, res) => {
                     res.json({ message });
 
                 } else {
-                    sendMessage(number, 'No river information available at this time.');
+                    sendMessage(number, 'No river data available at this time.');
                     res.json({ message: 'No river information available.' });
                 }
             })

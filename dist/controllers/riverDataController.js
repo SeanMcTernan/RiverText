@@ -13,14 +13,15 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getRiverData = void 0;
-const moment_1 = __importDefault(require("moment"));
+const moment_timezone_1 = __importDefault(require("moment-timezone"));
 const getCurrentFlow_1 = require("./getCurrentFlow");
 const getRiverID_1 = require("./getRiverID");
 const messageConstructor_1 = require("./messageConstructor");
 const sendMessage_1 = require("./sendMessage");
 const textFormatter_1 = require("./textFormatter");
 exports.getRiverData = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const currentTime = moment_1.default().format('YYYY-MM-DD');
+    const currentTime = moment_timezone_1.default().tz("America/Vancouver").format('YYYY-MM-DD');
+    console.log(`The date entered into the text request was: ${currentTime}`);
     const text = req.query.text.toLowerCase().trim();
     const river = textFormatter_1.textFormatter(text);
     const number = req.query.from;
@@ -37,7 +38,7 @@ exports.getRiverData = (req, res) => __awaiter(void 0, void 0, void 0, function*
                 res.json({ message });
             }
             else {
-                sendMessage_1.sendMessage(number, 'No river information available at this time.');
+                sendMessage_1.sendMessage(number, 'No river data available at this time.');
                 res.json({ message: 'No river information available.' });
             }
         })
