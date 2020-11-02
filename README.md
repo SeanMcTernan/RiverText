@@ -39,3 +39,13 @@ In 2019, I was fortunate enough to successfully kayak down one of the most chal
 To set myself an additional challenge I decided to write this app in TypeScript. I had not yet built a live app via Typescript, so I thought this would be a great opportunity to apply what I had learned in some courses I was taking. 
  
 The app as it stands is in its raw form. Going forward I would like to have a front end to show a map of rivers that are available and add a host server for remote to send flow data from gauge projects we are also working on. 
+
+### Install Instructions
+
+1. Clone/Download the Repository 
+2. From the folder run `npm install`
+3. Run `npm run dev`
+4. Make a request to the sever via Postman, or whatever your preferred app is, be sure to enter your cellphone so the app texts you: 
+`http://localhost:3000/riverdata/webhooks?from= ENTER YOUR CELLPHONE HERE &to=8335890354&subject&text=Elk`
+
+### Development Time: 1 Week
