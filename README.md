@@ -11,8 +11,8 @@ RiverText is a system that allows users to receive river flow information from <
 ## Technologies Used
 | Name                                                        | Purpose                                                                                                    |
 | ----------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
-| [NodeJS](https://nodejs.org/en/)         | Main programming langauge for the project |
-| [TypeScript](https://www.typescriptlang.org/)         | Main programming langauge during development|
+| [NodeJS](https://nodejs.org/en/)         | Main programming language for the project |
+| [TypeScript](https://www.typescriptlang.org/)         | Main programming language during development|
 | [Axios](https://www.npmjs.com/package/axios)                      | To make requests to the Intercom API |
 | [Moment](https://momentjs.com/)                      | To format the time on the API requests |
 | [SimpleTexting API](https://www.simpletexting.com) | To send and receive messages                                                          |
