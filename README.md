@@ -1,4 +1,4 @@
-# RiverText <a href="https://github.com/SeanMcTernan" target="_blank"><img src="https://raw.githubusercontent.com/SeanMcTernan/SeanMcTernan/7c1dcc08830e2087866a9d06c1f37d7b431edf82/ReadMe_Images/ReadMe_Badge_Small.svg" alt="RiverText App Image By Sean Mc Ternan" width="120"/></a>
+# RiverText <a href="https://github.com/SeanMcTernan" target="_blank"><img src="https://raw.githubusercontent.com/SeanMcTernan/SeanMcTernan/7c1dcc08830e2087866a9d06c1f37d7b431edf82/ReadMe_Images/ReadMe_Badge_Small.svg" alt="Site badgeBy Sean Mc Ternan" width="120"/></a>
 
 
 <img src="https://raw.githubusercontent.com/SeanMcTernan/SeanMcTernan/f481c32fdf59e90a360fae91bf47eedad2ae3f38/ReadMe_Images/RiverText/RiverText.svg" align="right"
