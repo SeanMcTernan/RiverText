@@ -16,7 +16,7 @@ RiverText is a system that allows users to receive river flow information from <
 | [Axios](https://www.npmjs.com/package/axios)                      | To make requests to the Intercom API |
 | [Moment](https://momentjs.com/)                      | To format the time on the API requests |
 | [SimpleTexting API](https://www.simpletexting.com) | To send and receive messages                                                          |
-| [Scrapi API](https://scrap2api.web.app/d)                     | To query the Canadian Water Office Website                                                                                     |
+| [Scrapi API](https://scrap2api.web.app/)                     | To query the Canadian Water Office Website                                                                                     |
 | [NPM](https://www.npmjs.com/)                                | As a package manager                                                         |
 | [ENV-CMD](https://www.npmjs.com/package/env-cmd)                     | To set environment variables                                                                                                 |
 | [Express.js](https://expressjs.com/)                            | To run the web server                                                                                      |
