@@ -26,7 +26,7 @@ RiverText is a system that allows users to receive river flow information from <
 ### The App
 
 <p align="center">
-  <img src="https://github.com/SeanMcTernan/SeanMcTernan/blob/master/ReadMe_Images/RiverText/RiverText.jpg?raw=true" alt="RiverText Image" width="738">
+  <img src="https://seanmcternan.com/static/media/RiverText.d4a65dad.jpg" alt="RiverText Image" width="738">
 </p>
 
 At this time there is no Frontend for the app, however it is operational. You can text any of the rivers in the rivers array to 833-589-0354 and receive a message. For example, text Stikine to 833-589-0354 and ask for the level of the Stikine River in Northern BC.
